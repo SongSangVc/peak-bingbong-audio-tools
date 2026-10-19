@@ -1,0 +1,199 @@
+﻿PEAK 宾邦玩偶语音工具 — 中英双语使用指导
+PEAK Bingbong Audio Plush Tools — Bilingual User Guide
+
+中文在前，英文在后。 / Chinese first, English follows.
+
+说明：本文以完整内置组件版资料包为例。默认源码/CI 构建需外置 FFmpeg，构建与发布方式见“构建与发布 Build and Release.md”。
+
+PEAK 宾邦玩偶制作资料包 — 中文使用指导
+版本日期：2026-10-20
+
+为什么要做伪随机序列和前置静音？
+有些玩偶发声器只支持顺序播放，没有随机播放模式。本工具先把完整音频打乱顺序并循环复制，在存储容量允许的范围内生成较长的预先排好的序列，让发声器顺序播放时也能呈现近似随机的效果。设备本身仍是顺序播放，序列用完后可能重复；文件名、写入顺序或排序方式需符合实际模块的要求。
+
+前奏前的 0.1 秒静音，是给发声器从触发到开始正常出声留出启动时间，减少音频开头被截掉、前奏或第一个音节放不出来的情况。0.1 秒是初始建议值，实际应试听调整：如果开头仍被截掉，可适当加长；启动快的模块可以缩短或设为 0。这段静音与前奏、语音之间的间隔是两个独立设置。
+
+一、先从哪里开始
+本资料包提供宾邦音频素材和两个 Windows 工具，便于制作发声玩偶。
+推荐先试听“02_音频素材 Audio Assets”中的以下目录：
+• 03_拼接语音前置空白0.1秒 Joined Voices with 0.1s Lead：26 条，已拼接前奏。
+• 04_拼接语音无前置空白 Joined Voices without Lead：26 条，开头没有额外留白。
+若只想使用纯语音，选择“01_原始语音 Original Voice Lines/MP3音频 MP3 Audio”。
+将选定版本复制到你的音频模块使用的存储卡或存储器；格式、采样率、文件排序和命名要求请以实际播放模块说明为准。
+
+二、目录内容与各版本区别
+01_实用程序 Applications
+  随机音频复制工具 Random Audio Copier.exe：伪随机排列并循环复制原音频，按容量上限自动计算可复制数量。
+  前奏语音拼接工具 Intro Voice Joiner.exe：为每条语音加上固定或随机前奏，可设置静音、音量与音高。
+  两个程序顶部均有 Language / 语言选项，可切换中文、英文，并记住语言选择。
+
+02_音频素材 Audio Assets
+  01_原始语音 Original Voice Lines：26 条 bingbongVO 语音，含 MP3 与提取出的 FSB。
+  02_前奏及相关音效 Intros and Related Sounds：9 个相关素材，含 MP3 与 FSB。
+    Au_BingBong_Squeak1.mp3 是本次现成拼接版本使用的前奏，也可选择其他音效。
+  03_拼接语音前置空白0.1秒 Joined Voices with 0.1s Lead：
+    0.1 秒静音 → Au_BingBong_Squeak1 前奏（音量 1 倍）→ 1 秒静音 → 语音。
+  04_拼接语音无前置空白 Joined Voices without Lead：
+    在上一版本基础上去掉最前面的 0.1 秒静音，其余保持一致。
+  05_已有随机复制结果 Existing Random Copies：现有一批 150 条音频的复制结果。
+    此批是旧命名方式（如 1.mp3、2.mp3），保留原状；与基础语音有重复，不是 150 条新台词。
+    新工具会使用“编号_原文件名”命名。
+  MP3 可直接用于试听和兼容的播放器。FSB 是游戏中提取的音频数据，适合后续研究或重新转换，普通 MP3 播放模块通常不能直接使用。
+
+src 源码：两个工具的 C# 源码与语言资源；一般使用者只需 EXE。
+third-party 第三方组件：内置音频组件的许可信息。
+发布包中的校验清单可用于核对文件完整性。
+
+三、随机音频复制工具
+1. 双击“01_实用程序 Applications/随机音频复制工具 Random Audio Copier.exe”。
+2. 设置原音频目录。只选你准备播放的一个版本，例如无前置空白的 26 条拼接语音。
+   不建议直接选择整个资料包作为输入，否则可能同时纳入多个版本及重复副本。
+3. 选择单独的输出父目录，勿与输入目录完全相同。
+4. 设置容量上限。MiB = 1,048,576 字节，GiB = 1,073,741,824 字节。
+   上限指本次输出音频的总字节数，不包括输入文件、文件系统占用及其他已有文件。
+   若存储器还有其他内容，应将上限设为实际可用空间以内，并预留余量。
+5. “原文件格式”仅筛选输入文件；本工具不转码，不改变音频内容，扩展名保持原样。
+6. 可勾选扫描子文件夹。程序会排除自身输出目录标记过的历史结果。
+7. 设置随机种子；输入和种子相同时，可重现排列。
+8. 点击“计算数量”，查看预计文件数与字节数，再点击“开始复制”。
+   每轮将全部输入音频随机打乱，重复完整轮次后，再加入末轮能放下的文件。
+   末轮下一条完整文件放不下时停止，因此总大小可能小于上限；不会切割音频来填满容量。
+9. 新输出文件名为 1_原文件名.mp3、2_原文件名.mp3 等，扩展名取自对应输入文件。
+10. 输出位于新建的时间戳子文件夹，可停止并保留已完成文件。
+
+四、前奏语音拼接工具
+1. 双击“01_实用程序 Applications/前奏语音拼接工具 Intro Voice Joiner.exe”。
+2. 语音目录建议选择“01_原始语音 Original Voice Lines/MP3音频 MP3 Audio”。
+   如果输入已经带前奏的成品，会在原成品前再次加前奏。
+3. 前奏来源可选“单个前奏文件”，或“文件夹内随机前奏”。
+   文件夹模式为每条语音随机挑选一个前奏，允许重复；不会将文件夹里的全部前奏连续拼在一起。
+4. 选择输出父目录。程序会为本次结果新建一个时间戳文件夹。
+5. 静音时长均以秒为单位：前奏前、前奏与语音之间，可设置为 0。
+6. 前奏和语音分别勾选启用处理。不启用时不调整对应段的音量与音高；拼接时仍会统一音频格式并重新编码。
+   音量 1 = 原振幅，0.5 = 一半振幅，0 = 静音。
+   音高 1 = 原播放速率；0.5 = 低八度、时长约加倍；2 = 高八度、时长约减半。
+   音高调整会同时改变速度和时长。
+7. 游戏风格的随机变化：先启用相应段处理，再分别勾选随机音量、随机音高，并填写下限和上限。
+   随机范围直接代表最终倍数，替代该项固定倍数；每条输出分别独立均匀取值。
+   默认 0.90～1.10 是轻微波动的初始设置，并非游戏内某个音效的实测范围。
+   不勾选的随机项继续使用固定倍数。相同输入与随机种子可复现前奏分配和效果参数。
+8. 输出可选 MP3（VBR q=2）、WAV（16-bit PCM）、FLAC；统一 48 kHz 立体声。
+9. 点击开始拼接。每条语音输出一个文件，保留语音名，重名自动添加序号。
+   拼接记录包含前奏来源、语音来源、效果参数；失败项目有错误记录。
+   记录中可能包含你所选文件的本地完整路径，分享新生成结果时可自行检查记录。
+10. 可中途停止，保留已完成文件，未完成文件丢弃。
+
+五、复现资料包中现成版本
+语音：01_原始语音中的 26 个 MP3。
+前奏：02_前奏及相关音效中的 Au_BingBong_Squeak1.mp3。
+前奏前静音：0.1 秒（无前置空白版本则设 0）。前奏与语音间静音：1 秒。
+前奏处理与语音处理关闭，输出 MP3。
+这会生成相同的排列结构；重新编码的文件字节不一定与现有 MP3 完全相同。
+
+六、运行环境与常见问题
+程序用于 64 位 Windows，使用系统的 .NET Framework 4.x；无需 Python，也无需安装 FFmpeg。
+拼接工具内置音频组件，首次处理会临时释放组件；EXE 可单独复制，处理时需要有临时磁盘空间。
+若下载的是 ZIP，请先完整解压再启动程序。可在普通可写目录中存放工具和输出结果。
+如果双击无法启动，可查看 Windows 的应用程序错误日志；若提示缺少 .NET Framework，则安装或启用对应系统组件。
+本资料包不包含玩偶电路、固件或具体播放器硬件配置；音频能播放不代表已验证特定发声模块兼容性。
+游戏音频来源于 PEAK，游戏音频与相关权利归其权利人所有。组件许可说明位于“third-party 第三方组件”。
+
+====================================================================
+ENGLISH
+====================================================================
+
+Note: this guide describes the full kit with an embedded component. Default source/CI builds require external FFmpeg; see “构建与发布 Build and Release.md”.
+
+PEAK Bingbong Plush Kit — English User Guide
+Release date: 2026-10-20
+
+Why use a pseudo-random sequence and leading silence?
+Some plush sound modules only support sequential playback and have no random mode. The copier shuffles complete audio files in repeated rounds and fills a storage budget with a longer prearranged sequence. Sequential playback can then feel approximately random. The device still plays sequentially, and the sequence may repeat when exhausted. Filename rules, write order, and sorting must match the actual module.
+
+The 0.1-second silence before the intro gives the sound module time to start producing sound after it is triggered, reducing the chance of losing the beginning of the intro or the first syllable. Treat 0.1 seconds as a starting value and test your module: increase it if the opening is still cut off, or shorten it, including to zero, for faster-starting modules. This leading silence is separate from the gap between the intro and voice.
+
+1. Quick start
+This kit contains Bingbong audio assets and two Windows tools for building a talking plush.
+For ready-made audio, preview either of these folders under “02_音频素材 Audio Assets”:
+• 03_拼接语音前置空白0.1秒 Joined Voices with 0.1s Lead: 26 files with an intro and leading silence.
+• 04_拼接语音无前置空白 Joined Voices without Lead: 26 files without the extra leading silence.
+For voice-only audio, use “01_原始语音 Original Voice Lines/MP3音频 MP3 Audio”.
+Copy your chosen version to the storage used by your audio module. Check that module's documentation for supported formats, sample rates, ordering, and filename rules.
+
+2. Package contents
+01_实用程序 Applications
+  随机音频复制工具 Random Audio Copier.exe: shuffles and repeatedly copies original files, calculating the output count from a capacity limit.
+  前奏语音拼接工具 Intro Voice Joiner.exe: adds a fixed or randomly selected intro to each voice, with silence, volume, and pitch controls.
+  Both tools have a “Language / 语言” selector at the top. Chinese and English are supported, and your selection is remembered.
+
+02_音频素材 Audio Assets
+  01_原始语音 Original Voice Lines: 26 bingbongVO clips in MP3 and extracted FSB formats.
+  02_前奏及相关音效 Intros and Related Sounds: 9 related assets in MP3 and FSB formats.
+    Au_BingBong_Squeak1.mp3 is the intro used in the ready-made joined versions. Other sounds may also be selected.
+  03_拼接语音前置空白0.1秒 Joined Voices with 0.1s Lead:
+    0.1 s silence → Au_BingBong_Squeak1 intro at 1x volume → 1 s silence → voice.
+  04_拼接语音无前置空白 Joined Voices without Lead:
+    The same version with only the initial 0.1 s silence removed.
+  05_已有随机复制结果 Existing Random Copies: one existing batch of 150 audio copies.
+    This batch retains its older naming scheme, such as 1.mp3 and 2.mp3. It contains repeats, not 150 new voice lines.
+    The current copying tool uses index_original-filename names.
+  MP3 files are for previewing and compatible players. FSB files are extracted game audio data for further conversion or research; typical MP3 modules cannot play them directly.
+
+src 源码: C# source and language resources for both tools. Regular users only need the EXEs.
+third-party 第三方组件: notices for the bundled audio component.
+The release checksum manifest can be used to check file integrity.
+
+3. Random Audio Copier
+1. Run “01_实用程序 Applications/随机音频复制工具 Random Audio Copier.exe”.
+2. Choose one source version, for example the 26 joined files without leading silence.
+   Selecting the entire kit may mix multiple versions and repeated copies.
+3. Choose a separate output folder; it must not be identical to the source folder.
+4. Set the capacity limit. One MiB is 1,048,576 bytes; one GiB is 1,073,741,824 bytes.
+   The limit applies to newly copied audio bytes, excluding source files, filesystem allocation overhead, and other existing files.
+   If the storage already contains other data, use its actual free space and leave some room.
+5. “Source format” filters input files only. This tool does not transcode or alter audio bytes; extensions are preserved.
+6. Optionally include subfolders. Previous output folders marked by this tool are excluded.
+7. Set a random seed. The same inputs and seed reproduce the ordering.
+8. Click “Calculate count”, review the count and size, then click “Start copying”.
+   Each full round shuffles all source files. After full rounds, a partial final round is added in random order.
+   Copying stops when the next complete file cannot fit. Some space may remain; files are never cut to fill the limit.
+9. Output names are 1_original-filename.mp3, 2_original-filename.mp3, etc., using each source file's extension.
+10. Results are saved in a new timestamped folder. You can stop and retain completed files.
+
+4. Intro Voice Joiner
+1. Run “01_实用程序 Applications/前奏语音拼接工具 Intro Voice Joiner.exe”.
+2. For the voice folder, use the MP3 folder inside “01_原始语音 Original Voice Lines”.
+   Using already joined files will add another intro before the existing audio.
+3. Select a single intro file or a folder of random intros.
+   Folder mode selects one intro for each voice; repeats are allowed. It does not concatenate all intros together.
+4. Choose an output folder. A new timestamped subfolder will hold this run's results.
+5. Set silence before the intro and between the intro and voice, in seconds. Zero is supported.
+6. Enable effects separately for the intro and voice.
+   When effects are disabled, that segment's volume and pitch are unchanged, though joining still standardizes the audio format and re-encodes it.
+   Volume 1 means original amplitude; 0.5 means half amplitude; 0 means silence.
+   Pitch 1 means original playback rate; 0.5 lowers pitch by an octave and roughly doubles duration; 2 raises it by an octave and roughly halves duration.
+   Pitch changes also affect playback speed and duration.
+7. For game-style variation, enable the segment's effects, check random volume and/or random pitch, and set minimum and maximum multipliers.
+   A random range replaces that property's fixed multiplier. Each output receives an independently sampled, uniform value.
+   The default 0.90–1.10 range is a starting point for subtle variation, not a measured range from a particular in-game sound.
+   Unchecked random options retain their fixed multipliers. The same inputs and seed reproduce intro selection and effect parameters.
+8. Choose MP3 (VBR q=2), WAV (16-bit PCM), or FLAC. Output is 48 kHz stereo.
+9. Start joining. One file is created per voice, retaining its base name; duplicate names get a suffix.
+   The join log records intro and voice sources and actual effect parameters. Failed items are recorded separately.
+   Logs may contain full local paths to your selected files; review them if you share newly generated results.
+10. You can stop a run. Completed files remain; incomplete outputs are discarded.
+
+5. Recreating the included joined versions
+Voices: the 26 original MP3 voice lines.
+Intro: Au_BingBong_Squeak1.mp3 from the related-sounds MP3 folder.
+Silence before intro: 0.1 s, or 0 for the version without leading silence.
+Silence between intro and voice: 1 s. Disable both intro and voice effects. Select MP3 output.
+This reproduces the arrangement; newly encoded file bytes may differ from the existing MP3s.
+
+6. Requirements and troubleshooting
+The tools are intended for 64-bit Windows with the system .NET Framework 4.x. Python and a separate FFmpeg installation are not required.
+The joiner embeds its audio component and extracts it temporarily when needed. The EXE can be moved independently; processing needs temporary disk space.
+If received as a ZIP, extract it fully before running. Use an ordinary writable folder for tools and output.
+If double-clicking fails, check the Windows application error log. If a missing .NET Framework component is reported, install or enable the required system component.
+This kit does not include plush electronics, firmware, or player-specific hardware configuration. Successful audio playback does not establish compatibility with a particular sound module.
+Game audio originates from PEAK and remains the property of its respective rights holders. Component notices are in “third-party 第三方组件”.

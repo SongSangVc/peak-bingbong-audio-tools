@@ -1,0 +1,27 @@
+name: Windows build and checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Build without bundled FFmpeg
+        shell: powershell
+        run: '& ".\scripts 脚本\构建 Build.ps1"'
+      - name: Check forms, languages, naming, capacity and random effects
+        shell: powershell
+        run: '& ".\scripts 脚本\检查 Check.ps1"'
+      - uses: actions/upload-artifact@v7
+        with:
+          name: windows-tools-external-ffmpeg
+          path: .build 本地构建/bin/
+          if-no-files-found: error
+          retention-days: 14

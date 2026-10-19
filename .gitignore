@@ -1,0 +1,29 @@
+# Local build/release products; upload archives through GitHub Releases.
+/.build*/
+/releases*/
+*.exe
+*.dll
+*.pdb
+*.zip
+*.7z
+*.mp3
+*.wav
+*.flac
+*.ogg
+*.m4a
+*.fsb
+*.resource
+*.resS
+*.log
+*.tmp
+# Local machine configuration and credentials
+.env
+.env.*
+!.env.example
+*.user
+*.suo
+.vs/
+.vscode/
+__pycache__/
+.DS_Store
+Thumbs.db

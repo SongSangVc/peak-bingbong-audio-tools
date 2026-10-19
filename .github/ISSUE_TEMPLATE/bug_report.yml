@@ -1,0 +1,36 @@
+name: 问题反馈 / Bug report
+description: 报告工具使用问题 / Report an application problem
+body:
+  - type: dropdown
+    id: tool
+    attributes:
+      label: 工具 / Application
+      options:
+        - 随机复制 / Random Copier
+        - 语音拼接 / Voice Joiner
+        - 文档或其他 / Documentation or other
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Windows 与工具版本 / Windows and tool version
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 重现步骤与使用参数 / Steps and settings
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 期望与实际结果 / Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 错误信息 / Error details
+      description: 请删去私人信息和完整本地路径 / Remove private information and full local paths.
