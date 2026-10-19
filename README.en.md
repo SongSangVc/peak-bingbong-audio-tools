@@ -24,6 +24,8 @@ This is a personal fan project. The entire project was completed with assistance
 
 ## Why these features exist
 
+**Provide audio files.** Offer pre-extracted and processed Bingbong voice files to those who want to create Bingbong dolls that randomly speak in the real world.
+
 **Make sequential playback feel approximately random.** Some plush sound modules have no random playback mode. The copier prepares a longer shuffled, repeated sequence within a storage budget, so sequential-only devices can sound more varied. The hardware remains sequential; its actual ordering may depend on numbering, filenames, or write order.
 
 **Allow time for the sound module to start.** The default `0.1-second` silence before the intro reduces the chance of losing the audio's opening during startup. Test and adjust it for your module: increase it if the start is cut off, or shorten it, including to `0`, for faster modules. Leading silence and the intro/voice gap are separate settings.
