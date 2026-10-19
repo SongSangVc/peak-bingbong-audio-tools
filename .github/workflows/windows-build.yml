@@ -15,10 +15,10 @@ jobs:
           persist-credentials: false
       - name: Build without bundled FFmpeg
         shell: powershell
-        run: '& ".\scripts 脚本\构建 Build.ps1"'
+        run: '& (Get-ChildItem -Path "./scripts*/*Build.ps1").FullName'
       - name: Check forms, languages, naming, capacity and random effects
         shell: powershell
-        run: '& ".\scripts 脚本\检查 Check.ps1"'
+        run: '& (Get-ChildItem -Path "./scripts*/*Check.ps1").FullName'
       - uses: actions/upload-artifact@v7
         with:
           name: windows-tools-external-ffmpeg
