@@ -1,5 +1,11 @@
 # 更新记录 · Changelog
 
+## 0.1.1 — 2026-10-20
+
+- 将 237 份 MP3 与 35 份提取的原始 FSB 直接收录到仓库。 / Added 237 MP3 files and 35 extracted original FSB files directly to the repository.
+- 构建流程优先使用 PowerShell 7，界面检查使用 STA。 / Prefer PowerShell 7, using STA for form checks.
+- 使用一份中英双语指南，补充伪随机序列和启动静音的用途。 / One bilingual guide explains pre-shuffled playback and startup silence.
+
 ## 0.1.0 — 2026-10-20
 
 - 合并为一份中英双语指南，补充顺序发声器的伪随机用途和前置静音的启动缓冲说明。 / Combined the bilingual guide and explained sequential playback and startup silence.

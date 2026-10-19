@@ -1,7 +1,7 @@
 ﻿[CmdletBinding()]
 param([string]$BuildDir)
 $ErrorActionPreference='Stop'
-if([Threading.Thread]::CurrentThread.GetApartmentState() -ne 'STA'){throw 'Use Windows PowerShell -STA / 请使用 Windows PowerShell -STA'}
+if([Threading.Thread]::CurrentThread.GetApartmentState() -ne 'STA'){throw 'Use PowerShell 7: pwsh -STA / 请使用 PowerShell 7 的 pwsh -STA'}
 Add-Type -AssemblyName System.Windows.Forms
 $root=Split-Path -Parent $PSScriptRoot
 if(!$BuildDir){$BuildDir=Join-Path $root '.build 本地构建\bin'}

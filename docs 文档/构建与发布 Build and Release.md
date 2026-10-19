@@ -2,17 +2,17 @@
 
 ## 环境 / Requirements
 
-64 位 Windows，系统自带的 .NET Framework 4.x 编译器，Windows PowerShell 5.1。脚本兼容本机 PowerShell 7 构建；界面检查请用 Windows PowerShell 的 STA 模式。
+64 位 Windows，系统自带的 .NET Framework 4.x 编译器，优先使用 PowerShell 7（`pwsh`）。界面检查需使用 STA 模式；这仅影响构建/检查脚本，运行成品 EXE 不要求安装 PowerShell 7。
 
-Use 64-bit Windows, the system .NET Framework 4.x compiler, and Windows PowerShell 5.1. Builds also work with PowerShell 7 on this machine; run form checks in Windows PowerShell with STA.
+Use 64-bit Windows, the system .NET Framework 4.x compiler, and preferably PowerShell 7 (`pwsh`). Form checks require STA. This applies to build/check scripts; running the finished EXEs does not require PowerShell 7.
 
 ## 从源码构建 / Build from source
 
-在项目根目录运行 / From the project root:
+在项目根目录使用 PowerShell 7 运行 / From the project root, in PowerShell 7:
 
 ```powershell
 & '.\scripts 脚本\构建 Build.ps1'
-& '.\scripts 脚本\检查 Check.ps1'
+pwsh -NoProfile -STA -File '.\scripts 脚本\检查 Check.ps1'
 ```
 
 无需现有 EXE、Python 或网络下载。输出在 `.build 本地构建/bin`，该目录已被 Git 忽略。
@@ -61,9 +61,9 @@ If local script policy blocks execution, follow your own system administration r
   -Version '0.1.0-full'
 ```
 
-`KitPath` 指向含 `02_音频素材 Audio Assets` 的文件夹。以上路径是示例，请替换为自己的位置。脚本创建新的临时目录来复制打包材料，不修改原始分享包。ZIP 与 `.sha256` 输出到 `releases 本地发布`；已有同名 ZIP 时停止，不覆盖。
+`KitPath` 为可选参数；不指定时，`-IncludeAudio` 会使用仓库中的 `audio 音频`。指定时应指向含 `02_音频素材 Audio Assets` 的文件夹。以上路径是示例，请替换为自己的位置。脚本创建新的临时目录来复制打包材料，不修改原始分享包。ZIP 与 `.sha256` 输出到 `releases 本地发布`；已有同名 ZIP 时停止，不覆盖。
 
-`KitPath` must contain `02_音频素材 Audio Assets`. Replace example paths with your own. Packaging copies into a new temporary staging directory without changing the original kit. ZIP and `.sha256` files go into `releases 本地发布`. Existing archives are not overwritten.
+`KitPath` is optional: without it, `-IncludeAudio` uses the repository's `audio 音频` folder. A supplied kit must contain `02_音频素材 Audio Assets`. Replace example paths with your own. Packaging copies into a new temporary staging directory without changing the original kit. ZIP and `.sha256` files go into `releases 本地发布`. Existing archives are not overwritten.
 
 ## GitHub 上传 / Publish to GitHub
 
@@ -72,7 +72,7 @@ If local script policy blocks execution, follow your own system administration r
 This project uses an independent Git repository named `peak-bingbong-audio-tools`. If you downloaded a source ZIP, first run `git init -b main` in the extracted project directory. The steps below can also be used to publish your own copy.
 
 1. 在 GitHub 新建空仓库。/ Create an empty GitHub repository.
-2. 只在这个项目目录中查看 `git status --short`，确认源码和文档。/ Review source and docs using `git status --short` inside this project.
+2. 只在这个项目目录中查看 `git status --short`，确认源码、文档和整理后的音频。/ Review source, docs, and curated audio using `git status --short` inside this project.
 3. 按你的身份配置 Git，提交后加入你创建的仓库地址。/ Configure your Git identity, commit, and add your repository URL.
 
 ```powershell

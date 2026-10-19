@@ -23,7 +23,7 @@
 
 ## 下载与开始使用
 
-从 [GitHub Releases 下载成品工具和完整资料包](https://github.com/Song-Siyu-05/peak-bingbong-audio-tools/releases/latest)。下载源码 ZIP 不会自动附带音频和成品程序。
+从 [GitHub Releases 下载成品工具和完整资料包](https://github.com/Song-Siyu-05/peak-bingbong-audio-tools/releases/latest)。仓库中已包含整理后的音频；GitHub 的源码 ZIP 包含音频，但不包含编译好的 EXE。
 
 1. 从已发布的 Release 下载工具包，或含素材的完整资料包，并完整解压。
 2. 打开 `01_实用程序 Applications`，双击所需 EXE。
@@ -37,7 +37,7 @@
 
 ## 本地构建
 
-在项目根目录使用 Windows PowerShell：
+在项目根目录优先使用 **PowerShell 7**（`pwsh`）：
 
 ```powershell
 & '.\scripts 脚本\构建 Build.ps1'
@@ -49,7 +49,7 @@
 
 ```powershell
 & '.\scripts 脚本\构建 Build.ps1' -FFmpegPath 'D:\tools\ffmpeg.exe'
-& '.\scripts 脚本\检查 Check.ps1'
+pwsh -NoProfile -STA -File '.\scripts 脚本\检查 Check.ps1'
 ```
 
 构建脚本无需旧版 EXE，不会自动下载组件。更多细节见[构建与发布](docs%20文档/构建与发布%20Build%20and%20Release.md)。
@@ -60,6 +60,7 @@
 README.md / README.en.md          中英文项目首页
 CONTACT.md / COPYRIGHT.md         反馈、联系方式、音频来源声明
 src 源码/                         两个 C# WinForms 程序及语言资源
+audio 音频/                       提取的原始音频及调整后的版本
 scripts 脚本/                     构建、检查与本地 ZIP 打包
 docs 文档/                        用户指南、素材清单、发布说明
 third-party 第三方组件/            现有 FFmpeg 组件信息
@@ -67,7 +68,7 @@ third-party 第三方组件/            现有 FFmpeg 组件信息
 releases 本地发布/                本地准备的附件；已被 Git 忽略
 ```
 
-源码仓库不纳入游戏本体、FFmpeg 二进制和重复生成的音频。完整音频素材保留在本地发布包中，按来源声明及所需许可决定分享范围。
+仓库的 [audio 音频目录](audio%20音频/) 已收录提取的原始 MP3 / FSB、两种拼接版本和已有随机复制结果。游戏本体、FFmpeg 二进制及今后生成在其他目录的副本仍被忽略。
 
 ## 反馈、来源与许可
 

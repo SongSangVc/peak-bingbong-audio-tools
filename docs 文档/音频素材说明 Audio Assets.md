@@ -1,8 +1,8 @@
 # 音频版本与来源 · Audio Sets and Provenance
 
-本地已有素材共 **237 份 MP3、35 份 FSB**。统计包含原始文件、拼接版本及重复副本，不等于不同台词数量。源码仓库只提供清单；当前完整本地发布包保留了全部音频。
+本地已有素材共 **237 份 MP3、35 份 FSB**。统计包含原始文件、拼接版本及重复副本，不等于不同台词数量。仓库的 [audio 音频目录](../audio%20音频/) 和完整发布包均保留了这些文件。
 
-The existing local collection contains **237 MP3 and 35 FSB files**, including originals, joined versions, and repeated copies. These are not counts of unique voice lines. The source repository includes the manifest; the full local release kit retains the audio.
+The existing local collection contains **237 MP3 and 35 FSB files**, including originals, joined versions, and repeated copies. These are not counts of unique voice lines. The [audio directory](../audio%20音频/) and full release kit both include these files.
 
 前置 `0.1 秒` 静音用于给发声器留出启动时间，减少音频开头漏播；可按模块调整。伪随机副本用于无随机模式的发声器，让预先打乱的文件按顺序播放时呈现近似随机的效果。
 

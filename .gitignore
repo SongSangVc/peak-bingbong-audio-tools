@@ -27,3 +27,7 @@
 __pycache__/
 .DS_Store
 Thumbs.db
+
+# Curated audio is intentionally shared; new generated files elsewhere remain ignored.
+!/audio 音频/**/*.mp3
+!/audio 音频/**/*.fsb

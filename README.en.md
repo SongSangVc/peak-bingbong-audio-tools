@@ -23,7 +23,7 @@ Fixed seeds reproduce ordering and effects. Pitch changes also affect speed and 
 
 ## Download and use
 
-[Download the tools or full kit from GitHub Releases](https://github.com/Song-Siyu-05/peak-bingbong-audio-tools/releases/latest). A source ZIP does not automatically include audio or built applications.
+[Download the tools or full kit from GitHub Releases](https://github.com/Song-Siyu-05/peak-bingbong-audio-tools/releases/latest). The repository now includes the curated audio. GitHub source ZIPs include it, but not built EXEs.
 
 1. Download a published tools ZIP or full kit and extract it completely.
 2. Run an EXE in `01_实用程序 Applications`.
@@ -37,7 +37,7 @@ The full kit's EXEs can be moved individually. A joiner **built with embedded FF
 
 ## Build locally
 
-From the project root, in Windows PowerShell:
+From the project root, preferably in **PowerShell 7** (`pwsh`):
 
 ```powershell
 & '.\scripts 脚本\构建 Build.ps1'
@@ -49,7 +49,7 @@ To embed an FFmpeg executable you supply:
 
 ```powershell
 & '.\scripts 脚本\构建 Build.ps1' -FFmpegPath 'D:\tools\ffmpeg.exe'
-& '.\scripts 脚本\检查 Check.ps1'
+pwsh -NoProfile -STA -File '.\scripts 脚本\检查 Check.ps1'
 ```
 
 No previous EXE is required and nothing is downloaded automatically. See [Build and Release](docs%20文档/构建与发布%20Build%20and%20Release.md) for checks and packaging.
@@ -57,13 +57,14 @@ No previous EXE is required and nothing is downloaded automatically. See [Build 
 ## Repository layout
 
 - `src 源码/`: both C# WinForms applications and language resources.
+- `audio 音频/`: extracted originals and adjusted audio sets.
 - `scripts 脚本/`: build, behavior checks, and local release packaging.
 - `docs 文档/`: user guides, asset manifest, and publication instructions.
 - `third-party 第三方组件/`: existing component notices.
 - `.github/`: feedback templates and Windows build workflow.
 - `releases 本地发布/`: locally prepared release attachments, ignored by Git.
 
-Game installations, FFmpeg binaries, and generated audio are excluded from Git. Existing audio assets remain in the local full-kit ZIP; sharing scope depends on the audio provenance and necessary permissions.
+The [audio directory](audio%20音频/) includes extracted MP3/FSB originals, both joined versions, and existing random copies. Game installations, FFmpeg binaries, and future copies generated elsewhere remain excluded from Git.
 
 ## Contact and rights
 

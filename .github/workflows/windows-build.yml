@@ -14,10 +14,10 @@ jobs:
         with:
           persist-credentials: false
       - name: Build without bundled FFmpeg
-        shell: powershell
+        shell: pwsh -STA -NoLogo -NoProfile -NonInteractive -File {0}
         run: '& (Get-ChildItem -Path "./scripts*/*Build.ps1").FullName'
       - name: Check forms, languages, naming, capacity and random effects
-        shell: powershell
+        shell: pwsh -STA -NoLogo -NoProfile -NonInteractive -File {0}
         run: '& (Get-ChildItem -Path "./scripts*/*Check.ps1").FullName'
       - uses: actions/upload-artifact@v7
         with:

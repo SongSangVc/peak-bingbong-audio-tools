@@ -1,4 +1,4 @@
-# v0.1.0 · 首次整理发布 / Initial organized release
+# v0.1.1 · 原始音频与 PowerShell 7 / Original Audio and PowerShell 7
 
 ## 内容 / Included
 
@@ -23,3 +23,9 @@ The full kit includes multiple versions and repeated copies, not 237 distinct li
 项目发布页 / Project releases: https://github.com/Song-Siyu-05/peak-bingbong-audio-tools/releases
 
 指南已合并为一份中英双语文件，并解释了顺序发声器的伪随机播放用途与前置静音的启动缓冲作用。 / The guide is now one bilingual file, explaining pre-shuffled sequences for sequential sound modules and leading silence for startup time.
+
+## 本次更新 / This update
+
+提取的原始 MP3 / FSB 及调整后的音频已直接放进仓库，可从 `audio 音频/` 浏览下载。构建与界面检查优先使用 PowerShell 7；GitHub 工作流通过 STA 运行窗口检查。
+
+Extracted original MP3/FSB and prepared audio are now directly available in `audio 音频/`. Builds and form checks prefer PowerShell 7; the GitHub workflow uses STA for form checks.

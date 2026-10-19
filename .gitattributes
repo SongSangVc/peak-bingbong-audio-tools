@@ -5,3 +5,6 @@
 *.ps1 text eol=crlf
 *.txt text eol=crlf
 *.csv text eol=crlf
+
+*.mp3 binary
+*.fsb binary
