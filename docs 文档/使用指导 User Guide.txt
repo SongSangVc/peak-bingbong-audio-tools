@@ -36,7 +36,7 @@ PEAK 宾邦玩偶制作资料包 — 中文使用指导
   04_拼接语音无前置空白 Joined Voices without Lead：
     在上一版本基础上去掉最前面的 0.1 秒静音，其余保持一致。
   05_已有随机复制结果 Existing Random Copies：现有一批 150 条音频的复制结果。
-    此批是旧命名方式（如 1.mp3、2.mp3），保留原状；与基础语音有重复，不是 150 条新台词。
+    各批次保留现有文件名；与基础语音有重复，不是 150 条新台词。
     新工具会使用“编号_原文件名”命名。
   MP3 可直接用于试听和兼容的播放器。FSB 是游戏中提取的音频数据，适合后续研究或重新转换，普通 MP3 播放模块通常不能直接使用。
 
@@ -135,7 +135,7 @@ Copy your chosen version to the storage used by your audio module. Check that mo
   04_拼接语音无前置空白 Joined Voices without Lead:
     The same version with only the initial 0.1 s silence removed.
   05_已有随机复制结果 Existing Random Copies: one existing batch of 150 audio copies.
-    This batch retains its older naming scheme, such as 1.mp3 and 2.mp3. It contains repeats, not 150 new voice lines.
+    Each batch retains its existing filenames. It contains repeats, not 150 new voice lines.
     The current copying tool uses index_original-filename names.
   MP3 files are for previewing and compatible players. FSB files are extracted game audio data for further conversion or research; typical MP3 modules cannot play them directly.
 

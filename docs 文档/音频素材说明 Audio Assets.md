@@ -20,7 +20,7 @@ The `0.1-second` leading silence gives the sound module startup time to reduce l
 - 相关音效：9 个，包含 `Au_BingBong_Squeak1`。/ Related sounds: 9 assets, including the chosen intro.
 - 带前置空白版本：0.1 秒静音 → `Au_BingBong_Squeak1`，音量 1 倍 → 1 秒静音 → 语音。/ Leading version: 0.1 s silence, intro at 1x volume, 1 s gap, voice.
 - 无前置空白版本：仅去掉最前面的 0.1 秒静音。/ No-lead version: only the initial silence was removed.
-- 150 个历史随机复制文件保留旧编号，包含重复。/ Historical random copies retain old numbering and include repeats.
+- 150 个已有随机复制文件保留各批次现有命名，包含重复。/ Existing random copies retain their batch filenames and include repeats.
 
 [完整文件清单 / Full manifest](音频文件清单%20Audio%20Manifest.csv) 只含分享包内相对路径，不含开发者本机绝对路径。
 
