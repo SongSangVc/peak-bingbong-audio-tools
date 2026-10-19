@@ -14,6 +14,13 @@ Copy-Item -LiteralPath (Join-Path $root 'src 源码') -Destination (Join-Path $s
 Copy-Item -LiteralPath (Join-Path $root 'third-party 第三方组件') -Destination (Join-Path $stage 'third-party 第三方组件') -Recurse
 foreach($file in @('README.md','README.en.md','CONTACT.md','COPYRIGHT.md','LICENSING.md','CHANGELOG.md')){Copy-Item -LiteralPath (Join-Path $root $file) -Destination $stage}
 if($IncludeAudio){Copy-Item -LiteralPath $audioSource -Destination (Join-Path $stage '02_音频素材 Audio Assets') -Recurse}
+# Keep audio links useful in both full-kit and tools-only archives.
+foreach($markdown in Get-ChildItem -LiteralPath $stage -Recurse -File -Filter '*.md'){
+ $text=[IO.File]::ReadAllText($markdown.FullName)
+ if($IncludeAudio){$text=$text.Replace('audio%20音频/','02_音频素材%20Audio%20Assets/')}
+ else{$text=$text.Replace('../audio%20音频/','https://github.com/Song-Siyu-05/peak-bingbong-audio-tools/tree/main/audio%20%E9%9F%B3%E9%A2%91/').Replace('(audio%20音频/','(https://github.com/Song-Siyu-05/peak-bingbong-audio-tools/tree/main/audio%20%E9%9F%B3%E9%A2%91/')}
+ [IO.File]::WriteAllText($markdown.FullName,$text,[Text.UTF8Encoding]::new($false))
+}
 $manifest=Join-Path $stage '完整文件校验 Complete File Checksums.csv'
 $entries=@(Get-ChildItem -LiteralPath $stage -Recurse -File | Where-Object {$_.FullName -ne $manifest} | ForEach-Object {[pscustomobject]@{RelativePath=$_.FullName.Substring($stage.Length+1).Replace('\','/');Bytes=$_.Length;SHA256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash}})
 $entries | Export-Csv -LiteralPath $manifest -NoTypeInformation -Encoding UTF8
