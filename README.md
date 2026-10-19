@@ -2,6 +2,8 @@
 
 [English](README.en.md) · **中文**
 
+维护者：**Song_Sang**（SongSang）
+
 为自制宾邦（Bingbong）发声玩偶准备音频：拼接前奏、调整声音，再按存储容量生成伪随机播放文件集。
 
 这是个人爱好者项目。整个项目使用 **OpenAI Codex** 辅助完成，包括音频提取与处理、工具开发及文档编写。工具面向 **64 位 Windows / .NET Framework 4.x**，界面可切换中英文。

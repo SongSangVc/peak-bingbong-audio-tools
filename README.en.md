@@ -2,6 +2,8 @@
 
 **English** · [中文](README.md)
 
+Maintained by **Song_Sang** (SongSang).
+
 Prepare audio for a DIY talking Bingbong plush: add intros, adjust effects, and generate a pseudo-random set of playback files within a storage budget.
 
 This is a personal fan project. The entire project was completed with assistance from **OpenAI Codex**, including audio extraction and processing, tool development, and documentation. The applications target **64-bit Windows with .NET Framework 4.x**, with Chinese and English interfaces.
