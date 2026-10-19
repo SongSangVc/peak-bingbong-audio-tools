@@ -2,6 +2,20 @@
 
 [English](README.en.md) · **中文**
 
+## 第一次使用？下载小白入门包
+
+### [直接下载：宾邦玩偶语音制作资料包（约 39 MiB）](https://github.com/SongSangVc/peak-bingbong-audio-tools/releases/download/v0.1.1/PEAK-Bingbong-Audio-Plush-Kit-Beginner.zip)
+
+包内已包含 **两个可直接运行的程序、提取的原始 MP3 / FSB、调整后的音频，以及一份中英双语使用指南**，无需自行编译。
+
+1. 下载 ZIP，**完整解压后再使用**。
+2. 打开解压目录中的 **`使用指导 User Guide.txt`**，中文在前、英文在后。
+3. 使用现成音频，进入 **`02_音频素材 Audio Assets`**；需要自己拼接或生成播放序列，进入 **`01_实用程序 Applications`**，双击所需程序。
+
+程序适用于 **64 位 Windows**。拼接程序已内置音频组件。
+
+---
+
 维护者：**Song_Sang**（SongSang）
 
 为自制宾邦（Bingbong）发声玩偶准备音频：拼接前奏、调整声音，再按存储容量生成伪随机播放文件集。

@@ -2,6 +2,20 @@
 
 **English** · [中文](README.md)
 
+## First time here? Start with the Beginner Kit
+
+### [Download the ready-to-use Bingbong Audio Plush Kit (about 39 MiB)](https://github.com/SongSangVc/peak-bingbong-audio-tools/releases/download/v0.1.1/PEAK-Bingbong-Audio-Plush-Kit-Beginner.zip)
+
+Includes **both ready-to-run applications, extracted MP3 / FSB originals, prepared audio, and one bilingual user guide**. No compilation is needed.
+
+1. Download the ZIP and **extract it completely before use**.
+2. Open **`使用指导 User Guide.txt`** inside the extracted folder. Chinese comes first, followed by English.
+3. For ready-made audio, open **`02_音频素材 Audio Assets`**. To customize intros or generate a playback sequence, run a tool in **`01_实用程序 Applications`**.
+
+The applications are for **64-bit Windows**. The joiner includes its audio component.
+
+---
+
 Maintained by **Song_Sang** (SongSang).
 
 Prepare audio for a DIY talking Bingbong plush: add intros, adjust effects, and generate a pseudo-random set of playback files within a storage budget.
