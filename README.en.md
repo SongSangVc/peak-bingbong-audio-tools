@@ -25,7 +25,7 @@ Fixed seeds reproduce ordering and effects. Pitch changes also affect speed and 
 
 ## Download and use
 
-[Download the tools or full kit from GitHub Releases](https://github.com/Song-Siyu-05/peak-bingbong-audio-tools/releases/latest). The repository now includes the curated audio. GitHub source ZIPs include it, but not built EXEs.
+[Download the tools or full kit from GitHub Releases](https://github.com/SongSangVc/peak-bingbong-audio-tools/releases/latest). The repository now includes the curated audio. GitHub source ZIPs include it, but not built EXEs.
 
 1. Download a published tools ZIP or full kit and extract it completely.
 2. Run an EXE in `01_实用程序 Applications`.

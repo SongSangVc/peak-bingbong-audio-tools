@@ -18,7 +18,7 @@ if($IncludeAudio){Copy-Item -LiteralPath $audioSource -Destination (Join-Path $s
 foreach($markdown in Get-ChildItem -LiteralPath $stage -Recurse -File -Filter '*.md'){
  $text=[IO.File]::ReadAllText($markdown.FullName)
  if($IncludeAudio){$text=$text.Replace('audio%20音频/','02_音频素材%20Audio%20Assets/')}
- else{$text=$text.Replace('../audio%20音频/','https://github.com/Song-Siyu-05/peak-bingbong-audio-tools/tree/main/audio%20%E9%9F%B3%E9%A2%91/').Replace('(audio%20音频/','(https://github.com/Song-Siyu-05/peak-bingbong-audio-tools/tree/main/audio%20%E9%9F%B3%E9%A2%91/')}
+ else{$text=$text.Replace('../audio%20音频/','https://github.com/SongSangVc/peak-bingbong-audio-tools/tree/main/audio%20%E9%9F%B3%E9%A2%91/').Replace('(audio%20音频/','(https://github.com/SongSangVc/peak-bingbong-audio-tools/tree/main/audio%20%E9%9F%B3%E9%A2%91/')}
  [IO.File]::WriteAllText($markdown.FullName,$text,[Text.UTF8Encoding]::new($false))
 }
 $manifest=Join-Path $stage '完整文件校验 Complete File Checksums.csv'

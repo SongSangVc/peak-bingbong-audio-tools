@@ -20,7 +20,7 @@ The full kit includes multiple versions and repeated copies, not 237 distinct li
 
 反馈 / Contact: SongSang_Yichang@outlook.com（偶尔查看 / checked occasionally）。整个项目使用 OpenAI Codex 辅助完成。/ The entire project was completed with assistance from OpenAI Codex.
 
-项目发布页 / Project releases: https://github.com/Song-Siyu-05/peak-bingbong-audio-tools/releases
+项目发布页 / Project releases: https://github.com/SongSangVc/peak-bingbong-audio-tools/releases
 
 指南已合并为一份中英双语文件，并解释了顺序发声器的伪随机播放用途与前置静音的启动缓冲作用。 / The guide is now one bilingual file, explaining pre-shuffled sequences for sequential sound modules and leading silence for startup time.
 

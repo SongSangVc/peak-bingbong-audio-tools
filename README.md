@@ -25,7 +25,7 @@
 
 ## 下载与开始使用
 
-从 [GitHub Releases 下载成品工具和完整资料包](https://github.com/Song-Siyu-05/peak-bingbong-audio-tools/releases/latest)。仓库中已包含整理后的音频；GitHub 的源码 ZIP 包含音频，但不包含编译好的 EXE。
+从 [GitHub Releases 下载成品工具和完整资料包](https://github.com/SongSangVc/peak-bingbong-audio-tools/releases/latest)。仓库中已包含整理后的音频；GitHub 的源码 ZIP 包含音频，但不包含编译好的 EXE。
 
 1. 从已发布的 Release 下载工具包，或含素材的完整资料包，并完整解压。
 2. 打开 `01_实用程序 Applications`，双击所需 EXE。
